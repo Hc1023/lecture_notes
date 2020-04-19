@@ -1,0 +1,142 @@
+\documentclass[UTF8]{ctexart}
+\usepackage[left=20mm,right=20mm, top=25mm,bottom=25mm]{geometry}
+\usepackage{amssymb}
+\usepackage{amsfonts}
+\usepackage{amsmath}
+\author{面临升学困难的黄思思 $\Diamond$ 巴德年数应专业摸鱼 \\ Blog: https://hc1023.github.io/}
+\title{偏导与全微分\& 泰勒展开}
+
+\newtheorem{example}{例题}
+\begin{document}
+\maketitle
+
+
+\section{轻松的分享}
+\subsection{微积分这门课}
+\begin{enumerate}
+\item 众多数学课程以及理工类课程的基础，常微分、偏微分、概率论与数理统计etc
+
+\item 抽象思维导引，比如著名的$\epsilon - \delta$语言
+\end{enumerate}
+
+\subsection{学习资源}
+\begin{enumerate}
+\item 推荐一个很好的下载书籍的网站：https://b-ok.xyz/
+\item 文本编辑：Here comes \LaTeX! Miktex+TeXworks+Mathpix; Markdown语法！Typora or VS code. 
+\end{enumerate}
+
+\section{偏导数}
+以二元函数为例，设$f(x,y)$在$(x_0,y_0)$的某个邻域上有定义。固定$y=y_0$将$f(x,y)$视为$x$的一元函数。如果它在$x_0$点可导，定义$f(x,y)$在$(x_0,y_0)$点关于$x$的偏导数
+$$\frac{\partial f}{\partial x}\left(x_{0}, y_{0}\right)=\lim _{\Delta x \rightarrow 0} \frac{f\left(x_{0}+\Delta x, y_{0}\right)-f\left(x_{0}, y_{0}\right)}{\Delta x},$$
+类似定义$\frac{\partial f}{\partial y}\left(x_{0}, y_{0}\right)$以及任意个变元的多元函数的偏导数。
+
+一定要牢记定义！
+
+\begin{example}
+求
+$$f(x, y)=\left\{\begin{array}{ll}
+y \ln \left(x^{2}+y^{2}\right), & (x, y) \neq(0,0), \\
+0, & (x, y)=(0,0).
+\end{array}\right.$$
+在点$(0,0)$的偏导数。
+\end{example}
+
+
+在一元函数中，可导可以推出连续，但在多元函数中，若$f$在某一点对每一个变元的偏导数存在，不能说$f$在该点连续，甚至不能说$f$在该点的极限存在。
+
+\begin{example}
+考察
+$$f(x, y)=\left\{\begin{array}{ll}
+1, & \text { 当 } x y \neq 0, \\
+0, & \text { 当 } x y=0.
+\end{array}\right.$$
+在$(0,0)$处对$x,y$的偏导数，在$(0,0)$点的连续性和极限存在性。
+\end{example}
+
+如果偏导数在某一点的邻域内存在而且有界，则可推出函数在该点连续。
+
+\begin{example}
+证明函数$f(x,y)$的两个偏导数$\frac{\partial f}{\partial x}$和$\frac{\partial f}{\partial y}$在$(x_0,y_0)$点的某个邻域内存在且有界，则$f$在$(x_0,y_0)$点连续。
+
+提示：微分中值定理
+\end{example}
+
+\section{全微分}
+
+设$z=f(x,y)$在$(x_0,y_0)$的某邻域上有定义，如果$\Delta z=f(x_0+\Delta x,y_0+\Delta y)-f(x_0,y_0)$可以表示为
+$$\Delta z=A \Delta x+B \Delta y+o(r),$$
+其中$A,B$是两个仅与点$(x_0,y_0)$有关而与$\Delta x,\Delta y$无关的常数，$o(r)$是当$r\rightarrow 0$时关于$r$的高阶无穷小量，$r=\sqrt{(\Delta x)^{2}+(\Delta y)^{2}}$，则称$f$在点$(x_0,y_0)$可微，且称$A \Delta x+B \Delta y$是$f$在$(x_0,y_0)$点的全微分。又可以写作
+$$\mathrm{d} z=A \mathrm{d} x+B \mathrm{d} y$$
+
+
+全微分具有下列性质：
+（1）如果$f$在点$(x_0,y_0)$可微，则
+$$A=\frac{\partial f}{\partial x}\left(x_{0}, y_{0}\right), \quad B=\frac{\partial f}{\partial y}\left(x_{0}, y_{0}\right)$$
+（2）若$f$在点$(x_0,y_0)$可微，则$f$在点$(x_0,y_0)$连续
+
+\begin{example}
+设$f(x,y)=\sqrt{|xy|}$，证明：
+（1）$f(x,y)$在$(0,0)$点连续；
+（2）$\frac{\partial f}{\partial x}(0,0), \frac{\partial f}{\partial y}(0,0)$都存在；
+（3）从定义出发证明$f(x,y)$在$(0,0)$点不可微.
+\end{example}
+
+偏导数存在，可微和连续的关系：
+可微则偏导数存在，偏导数存在且连续则可微。偏导数存在且在某邻域内偏导数有界则连续，可微则连续，连续不能反向推出任何一者。
+
+可以直接对函数求全微分来求偏导数。%一般题目喜欢：偏导数+隐函数+全微分+链式法则
+
+\section{隐函数偏导数}
+\begin{example}
+设$f(x,y)$在$\mathbb{R}^2$上有连续偏导数，且$f(x,x^2)\equiv 1$.
+（1）若$f_x(x,x^2)=x$，求$f_y(x,x^2)$;
+（2）若$f_y(x,y)=x^2+2y$，求$f(x,y)$.
+\end{example}
+
+\begin{example}
+设$z=f(x,y)$是由方程$F(x-y,y-z)=0$确定的隐函数，求$z_x,z_y$及$z_{xy}$.
+\end{example}
+
+\begin{example}
+设$x=\cos \varphi \cos \psi, y=\cos \varphi \sin \psi, z=\sin \varphi$,求$\frac{\partial^{2} z}{\partial x^{2}}$.
+\end{example}
+
+\section{Taylor展开}
+
+这里直接讨论二元函数的泰勒展开。
+
+Taylor公式：设函数$f(x,y)$在开圆盘$D=\left\{(x, y) |\left(x-x_{0}\right)^{2}+\left(y-y_{0}\right)^{2}<a^2\right\}.$内有关于$x,y$的各个$m+1$阶连续偏导数。对$D$内任意一点$(x,y)$，记$\Delta x=x-x_{0}, \Delta y=y-y_{0}$，则
+
+$$\begin{aligned}
+f(x, y)=f\left(x_{0}, y_{0}\right) &+\frac{\partial f}{\partial x}\left(x_{0}, y_{0}\right) \Delta x+\frac{\partial f}{\partial y}\left(x_{0}, y_{0}\right) \Delta y \\
+&+\frac{1}{2 !}\left(\Delta x \frac{\partial}{\partial x}+\Delta y \frac{\partial}{\partial y}\right)^{2} f\left(x_{0}, y_{0}\right)+\cdots \\
+&+\frac{1}{m !}\left(\Delta x \frac{\partial}{\partial x}+\Delta y \frac{\partial}{\partial y}\right)^{m} f\left(x_{0}, y_{0}\right)+R_{m}(x, y),
+\end{aligned}$$
+
+其中
+
+$$R_{m}(x, y)=\frac{1}{(m+1) !}\left(\Delta x \frac{\partial}{\partial x}+\Delta y \frac{\partial}{\partial y}\right)^{m+1} f\left(x_{0}+\theta \Delta x, y_{0}+\theta \Delta y\right)$$
+$0<\theta<1$，称为Lagrange余项。
+
+（Taylor公式的唯一性）设$f(x,y)$具有$m+1$阶连续偏导数，若用某种方法得到展开式
+
+$$f(x, y)=\sum_{i+j=0}^{m} A_{i j}\left(x-x_{0}\right)^{i}\left(y-y_{0}\right)^{j}+o\left(\rho^{m}\right),$$
+其中$\rho=\sqrt{\left(x-x_{0}\right)^{2}+\left(y-y_{0}\right)^{2}}$，则必有
+$$A_{i j}=\frac{1}{i ! j !} \frac{\partial^{i+j}}{\partial x^{i} \partial y^{j}} f\left(x_{0}, y_{0}\right).$$
+
+记住几个常见的泰勒展开。应用：1.利用已有的常见泰勒展开求其他函数的泰勒展开；2.利用泰勒展开求高阶导数。
+
+\begin{example}
+设
+$$f(x, y)=\left\{\begin{array}{ll}
+\frac{1-\mathrm{e}^{x\left(x^{2}+y^{2}\right)}}{x^{2}+y^{2}}, & (x, y) \neq(0,0) \\
+0, & (x, y)=(0,0)
+\end{array}\right.$$
+求$f(x,y)$在$(0,0)$的4阶Taylor多项式，并求出$\frac{\partial^{2} f}{\partial x \partial y}(0,0), \frac{\partial^{4} f}{\partial x^{4}}(0,0)$.
+\end{example}
+
+\section{考试准备}
+注重定义+例题
+
+考试仔细些就好了。
+\end{document}
